@@ -14,7 +14,7 @@ vatebur-message-chat-enhancement:
         label: 私信 · 回复输入栏
         help: 调整输入框和工具栏。与「私信 · 页面布局」一同开启时，输入栏会贴合对话底部。
       theme:
-        label: 论坛 · 东方未明配色和门户
+        label: 论坛 · 暖纸配色和门户
         help: 应用暖纸与朱砂配色、明暗和高对比度变体，并调整 Melon 门户、导航和公共控件。
       mobile-discussion:
         label: 论坛 · 移动端帖子正文
