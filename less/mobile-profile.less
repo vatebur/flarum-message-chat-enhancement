@@ -1,0 +1,28 @@
+& when (@mce-mobile-profile = 1) {
+  /* Mobile profile card: centered portrait on one continuous surface. */
+  @media (max-width: 767.98px) {
+    html:root .UserPage .UserHero.UserCard {
+      padding: 26px 20px 24px !important;
+      background: linear-gradient(135deg, var(--mh-bar, var(--header-bg)), var(--mh-tone, var(--control-color))) !important;
+      border-radius: 0 0 20px 20px;
+      color: var(--mh-on-dark, var(--header-color, var(--text-color)));
+    }
+    html:root .UserPage .UserHero > .darkenBackground { background: transparent !important; }
+    html:root .UserPage .UserHero > .darkenBackground > .container { padding: 0; }
+    html:root .UserPage .UserHero .UserCard-profile { grid-template-columns: minmax(0, 1fr); gap: 14px; padding: 0; text-align: center; }
+    html:root .UserPage .UserHero .UserCard-avatar { width: 72px; margin: 0 auto; }
+    html:root .UserPage .UserHero .UserCard-avatar .Avatar { --size: 72px; width: 72px; height: 72px; box-sizing: border-box; border: 3px solid rgba(255,255,255,.9); box-shadow: 0 4px 14px rgba(0,0,0,.16); }
+    html:root .UserPage .UserHero .AvatarEditor > .Dropdown-toggle { width: 72px; height: 72px; margin: 0; border-radius: 50%; }
+    html:root .UserPage .UserHero .UserCard-content { min-width: 0; }
+    html:root .UserPage .UserHero .UserCard-identity { font-size: 20px; line-height: 1.4; font-weight: 650; overflow-wrap: anywhere; }
+    html:root .UserPage .UserHero .UserCard-badges { margin: 0 0 0 8px; }
+    html:root .UserPage .UserHero .UserCard-badges .Badge { --size: 20px; }
+    html:root .UserPage .UserHero .UserCard-info { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 12px; margin-top: 12px; font-size: 12px; line-height: 1.6; }
+    html:root .UserPage .UserHero .UserCard-info > li { margin: 0; }
+    html:root .UserPage .UserHero .UserCard-info > .item-bio { flex-basis: 100%; margin-top: 6px; min-width: 0; }
+    html:root .UserPage .UserHero .UserBio { margin: 0; border-color: transparent; font-size: 13px; }
+    html:root .UserPage .UserHero .UserBio-content { padding: 6px 10px; line-height: 1.6; }
+    html:root .UserPage .UserHero .UserBio-content p { margin: 0; }
+    html:root .UserPage .UserHero .UserBio-placeholder { color: var(--mh-on-dark-2, var(--header-color, var(--text-color))); opacity: .8; }
+  }
+}

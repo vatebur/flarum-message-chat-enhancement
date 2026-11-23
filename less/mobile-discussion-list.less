@@ -1,0 +1,18 @@
+& when (@mce-mobile-discussion-list = 1) {
+  /* Shared mobile lists: all discussions, tag feeds, following and search. */
+  @media (max-width: 767.98px) {
+    html:root .DiscussionList .DiscussionListItem { padding: 0 !important; margin: 0 0 5px !important; border-radius: 10px; }
+    html:root .DiscussionList .DiscussionListItem-content { padding: 11px 12px; gap: 10px; }
+    html:root .DiscussionList .DiscussionListItem-main { padding-right: 32px; min-width: 0; }
+    html:root .DiscussionList .DiscussionListItem-title { font-size: 14px; line-height: 1.4; margin-bottom: 4px; }
+    html:root .DiscussionList .DiscussionListItem-info { font-size: 11px; line-height: 1.5; }
+    html:root .DiscussionList .DiscussionListItem-info > .item-terminalPost { display: block; margin: 3px 0 0; }
+    html:root .DiscussionList .DiscussionListItem-stats { right: 12px; top: 12px; }
+    html:root .DiscussionList .DiscussionListItem-author-avatar .Avatar { --size: 30px; }
+    html:root .DiscussionList .DiscussionListItem-author { margin-top: 1px; }
+    html:root .IndexPage-toolbar { margin-bottom: 10px; }
+    html:root .MastheadRow { padding: 10px 12px; gap: 10px; }
+    html:root .MastheadRow-title { font-size: 14px; line-height: 1.4; }
+    html:root .MastheadRow-meta { font-size: 11px; line-height: 1.5; }
+  }
+}

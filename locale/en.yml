@@ -1,0 +1,36 @@
+vatebur-message-chat-enhancement:
+  admin:
+    settings:
+      chat-layout:
+        label: Messages · Page layout
+        help: Switch between a two-column desktop layout and a single-column mobile layout, with a scrolling message pane.
+      chat-dialog-list:
+        label: Messages · Conversations and header
+        help: Style dialog previews, selection, avatars, the back button, and header spacing.
+      chat-bubbles:
+        label: Messages · Bubbles and media
+        help: Style incoming and outgoing messages, avatars, timestamps, images, and video.
+      chat-composer:
+        label: Messages · Reply composer
+        help: Style the input and toolbar. Also enable the Messages page layout to dock the composer below the conversation.
+      theme:
+        label: Forum · Warm paper theme and portal
+        help: Apply the warm paper palette, dark and high-contrast variants, and styles for the Melon portal, navigation, and controls.
+      mobile-discussion:
+        label: Forum · Mobile discussion pages
+        help: Adjust discussion headings, message text, blockquotes, and reply spacing.
+      mobile-discussion-list:
+        label: Forum · Mobile discussion lists
+        help: Adjust lists on the homepage, tag feeds, following, and search results.
+      mobile-boards:
+        label: Forum · Mobile board directory
+        help: Adjust board cards, icons, and directory spacing.
+      mobile-profile:
+        label: Forum · Mobile user profiles
+        help: Adjust avatars, badges, bios, and profile card layout.
+      editor-tools:
+        label: Editor · Compact shared styles
+        help: Adjust editor padding and corners and hide selected rich-text controls. Applies to the Messages editor as well.
+      discussion-composer:
+        label: Editor · Discussions and replies
+        help: Adjust the writing area, action bar, and full-screen layout on mobile.

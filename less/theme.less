@@ -1,0 +1,205 @@
+& when (@mce-theme = 1) {
+  /* 东方未明 · 暖纸与朱砂 / light, dark and high contrast */
+  #flarum-loading[style=""], #flarum-loading-error[style=""] { display: none; }
+  /* Campus / warm paper theme — 2026-11-18 */
+  html:root {
+    --mh-accent: #bd414b;
+    --mh-bar: #462d37;
+    --mh-strip: #34232c;
+    --mh-bar-raised: #61434d;
+    --mh-bar-line: #73505b;
+    --mh-tone: #62414d;
+    --mh-on-dark: #fff9f6;
+    --mh-on-dark-2: #f1e2e4;
+    --mh-on-dark-3: #d8c0c7;
+    --mh-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    --mh-radius: 20px;
+    --mh-radius-md: 16px;
+    --mh-radius-sm: 10px;
+    --mh-rule: 3px;
+    --melon-primary: #bd414b !important;
+    --melon-primary-dark: #9e303e !important;
+    --primary-color: #bd414b;
+    --theme-shadow: 0 5px 24px rgba(79, 43, 48, .045);
+  }
+  html:root[data-theme^="light"] {
+    --mh-ground: #f7f3ef;
+    --mh-card: #fffefd;
+    --mh-ink: #30272c;
+    --mh-muted: #796a70;
+    --mh-line: #e9dfda;
+    --mh-line-soft: #f1e9e4;
+    --body-bg: #fffefd;
+    --text-color: #30272c;
+    --heading-color: #30272c;
+    --muted-color: #796a70;
+    --control-bg: #f2eae6;
+    --control-color: #765b65;
+    --hero-bg: #f0e5e1;
+    --theme-glow: rgba(214, 159, 144, .12);
+  }
+  html:root[data-theme^="dark"] {
+    --mh-ground: #1c191e;
+    --mh-card: #262127;
+    --mh-ink: #f4e9e7;
+    --mh-muted: #baa8ae;
+    --mh-line: #44363f;
+    --mh-line-soft: #342c33;
+    --body-bg: #262127;
+    --text-color: #f4e9e7;
+    --heading-color: #f4e9e7;
+    --muted-color: #baa8ae;
+    --control-bg: #3b2e37;
+    --control-color: #e3c4cc;
+    --mh-accent: #ee8d98;
+    --primary-color: #ee8d98;
+    --melon-primary: #b64050 !important;
+    --hero-bg: #30242d;
+    --theme-shadow: 0 5px 24px rgba(0, 0, 0, .12);
+    --theme-glow: rgba(140, 68, 91, .10);
+  }
+  html:root[data-theme^="light"] .App-content,
+  html:root[data-theme^="dark"] .App-content {
+    background: radial-gradient(ellipse at 10% 0%, var(--theme-glow), transparent 55%), var(--mh-ground);
+  }
+  html .MastheadStrip { border-bottom: 1px solid rgba(255,255,255,.06); }
+  html .App-header { box-shadow: 0 4px 22px rgba(53, 26, 38, .1); }
+  html .MastheadBrand-logo { background: #fffaf7; padding: 7px 13px; border-radius: 13px; }
+  html .MastheadBrand-logo .Header-logo { max-height: 43px; }
+  html .MastheadNav-link { border-radius: 9px; transition: background .18s, color .18s; }
+  html .MastheadNav-link:hover { background: rgba(255,255,255,.09); color: #fff; }
+  html:root .MastheadCompose.Button,
+  html:root .Button--primary { background: #bd414b !important; color: #fff !important; box-shadow: 0 3px 9px rgba(124,36,51,.12); }
+  html:root .MastheadCompose.Button:hover,
+  html:root .Button--primary:hover { background: #a33442 !important; }
+  html .MastheadPortal { padding-top: 32px; }
+  html .MastheadCard, html .MastheadTile, html .MastheadPanel, html .MastheadWidget {
+    box-shadow: var(--theme-shadow);
+  }
+  html .MastheadTile, html .MastheadStory { transition: transform .18s, box-shadow .18s, border-color .18s; }
+  html .MastheadTile:hover, html .MastheadStory:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 9px 26px rgba(96,45,58,.09);
+    border-color: var(--mh-accent);
+  }
+  html .MastheadHero--overlay .MastheadHero-body {
+    background: linear-gradient(0deg, rgba(37,21,31,.92), rgba(37,21,31,.72) 65%, rgba(37,21,31,.03));
+    padding-top: 54px;
+  }
+  html .MastheadHero-title { font-weight: 750; letter-spacing: -.03em; line-height: 1.3; }
+  html .MastheadHeading { font-size: 22px; font-weight: 750; letter-spacing: -.025em; }
+  html .MastheadWidget-title { font-size: 17px; font-weight: 700; letter-spacing: 0; }
+  html .MastheadPanel-head { padding-top: 20px; padding-bottom: 20px; }
+  html .MastheadTile { padding: 23px 20px; }
+  html .MastheadTile-icon { border-radius: 14px; }
+  html .MastheadRow { transition: background .18s; }
+  html .MastheadRow:hover { background: color-mix(in srgb, var(--mh-accent) 5%, var(--mh-card)); }
+  html .MastheadRow-title { font-size: 14px; line-height: 1.6; }
+  html .MastheadRow-meta { line-height: 1.8; }
+  html .MastheadTab[aria-selected="true"] { background: #bd414b; color: #fff; border-color: #bd414b; }
+  html:root .Hero.WelcomeHero { background: var(--hero-bg); border-bottom: 1px solid var(--mh-line); }
+  html:root .Hero.WelcomeHero .Hero-title { color: var(--mh-ink); text-shadow: none; }
+  html:root .Hero.WelcomeHero .Hero-subtitle { color: var(--mh-muted); }
+  html:root .MobileTab, html:root .MobileTabBar { border-color: var(--mh-line); }
+  html:root { scrollbar-color: #be929a var(--mh-ground); }
+  ::-webkit-scrollbar-thumb { background: #be929a !important; border-radius: 10px; }
+  ::-webkit-scrollbar-track { background: var(--mh-ground) !important; }
+  html:root a:focus-visible, html:root button:focus-visible { outline: 2px solid var(--mh-accent); outline-offset: 3px; }
+  @media (max-width: 767px) {
+    .MastheadPortal { padding-top: 18px; }
+    .MastheadBrand-logo { padding: 4px 9px; border-radius: 9px; }
+    .MastheadBrand-logo .Header-logo { max-height: 30px; }
+    .MastheadHeading { font-size: 19px; }
+    .MastheadHero--overlay .MastheadHero-body { padding: 40px 20px 22px; }
+    .MastheadTile { padding: 18px 16px; }
+    .MastheadHero-title { font-size: 27px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .MastheadTile, html .MastheadStory, html .MastheadNav-link, html .MastheadRow { transition: none; }
+    .MastheadTile:hover, html .MastheadStory:hover { transform: none; }
+  }
+  /* Final contrast and mobile navigation polish. */
+  html .MastheadCard, html .MastheadTile { border-color: var(--mh-line); }
+  html .MobileTab-bar { background: var(--mh-strip) !important; border-top: 1px solid var(--mh-bar-line); }
+  html .MobileTab-tab, html .MobileTab-tab-icon, html .MobileTab-tab-label { color: #eadde1; }
+  html .MobileTab-tab--active, html .MobileTab-tab--active .MobileTab-tab-icon,
+  html .MobileTab-tab--active .MobileTab-tab-label { color: #fff; }
+  html .MobileTab-bar-plus { background: #bd414b !important; color: #fff !important; }
+  @media (max-width: 767px) {
+    html.has-mobile-tab .MastheadCompose { display: none !important; }
+  }
+
+  /* Theme tokens also cover menus, editors, dialogs and discussion pages. */
+  html:root {
+   --link-color: #a63040; --button-primary-bg: #b53848;
+   --button-primary-color: #fff; --discussion-title-color: var(--mh-ink);
+   --body-bg-light: var(--mh-card); --body-bg-shaded: var(--mh-ground);
+   --body-bg-faded: var(--mh-card); --hero-color: var(--mh-muted);
+   --header-bg: var(--mh-bar); --header-color: var(--mh-on-dark);
+   --header-control-bg: var(--mh-bar-raised); --header-control-color: var(--mh-on-dark-2);
+  }
+  html:root[data-theme^="light"] { --link-color:#a63040; --hero-bg:#f3e5df; --welcome-glow:rgba(213,152,123,.25); --welcome-ring:rgba(163,72,77,.12); }
+  html:root[data-theme^="dark"] { --link-color:#f3a4af; --hero-bg:#352730; --welcome-glow:rgba(175,81,109,.20); --welcome-ring:rgba(241,167,182,.12); }
+  html:root[data-theme="light-hc"] {
+   --mh-ground:#f4f0eb; --mh-card:#ffffff; --mh-ink:#241b20; --mh-muted:#58424b;
+   --mh-line:#a48a90; --mh-line-soft:#cbb9bd; --mh-accent:#9b2436;
+   --text-color:#241b20; --heading-color:#241b20; --muted-color:#58424b;
+   --control-bg:#eadeD9; --control-color:#4e303b; --link-color:#8c2030;
+   --hero-bg:#efdad1; --theme-shadow:none;
+  }
+  html:root[data-theme="dark-hc"] {
+   --mh-ground:#121014; --mh-card:#1e191f; --mh-ink:#fff7f2; --mh-muted:#e0cbd1;
+   --mh-line:#97747f; --mh-line-soft:#6a515b; --mh-accent:#ffb6c2;
+   --text-color:#fff7f2; --heading-color:#fff7f2; --muted-color:#e0cbd1;
+   --control-bg:#3b2c35; --control-color:#ffe0e7; --link-color:#ffb6c2;
+   --hero-bg:#39232f; --theme-shadow:none;
+  }
+  html:root .Hero.WelcomeHero {
+   position:relative; isolation:isolate; overflow:hidden; margin-bottom:28px;
+   background:radial-gradient(ellipse at 12% 12%,var(--welcome-glow),transparent 65%),var(--hero-bg) !important;
+   border-bottom:1px solid var(--mh-line); color:var(--mh-ink);
+  }
+  html .WelcomeHero::after {
+   content:""; position:absolute; z-index:-1; pointer-events:none;
+   width:320px; height:320px; border:1px solid var(--welcome-ring); border-radius:50%;
+   right:6%; top:-190px; box-shadow:0 0 0 42px var(--welcome-ring),0 0 0 84px var(--welcome-ring);
+  }
+  html .WelcomeHero .containerNarrow { padding-top:34px; padding-bottom:34px; }
+  html:root .WelcomeHero .Hero-title { color:var(--mh-ink) !important; font-size:26px; font-weight:750; line-height:1.5; letter-spacing:.01em; overflow-wrap:anywhere; }
+  html:root .WelcomeHero .Hero-subtitle { color:var(--mh-muted) !important; line-height:1.8; }
+  html:root .WelcomeHero .Hero-close { color:var(--mh-muted); background:transparent; }
+  html:root .WelcomeHero a { color:var(--link-color); text-decoration:underline; text-underline-offset:4px; }
+  html:root .DiscussionListItem { border-bottom:1px solid var(--mh-line-soft); border-radius:12px; }
+  html:root .DiscussionListItem:hover { background:var(--control-bg); }
+  html:root .DiscussionListItem-title { color:var(--mh-ink); }
+  html:root .DiscussionListItem-info { color:var(--mh-muted); }
+  html:root .Dropdown-menu, html:root .Modal-content, html:root .Composer {
+   background:var(--mh-card); color:var(--mh-ink); border-color:var(--mh-line);
+  }
+  html:root .FormControl { background:var(--control-bg); color:var(--control-color); border-color:var(--mh-line); }
+  html .MastheadSearch .FormControl { background:var(--mh-bar-raised); color:var(--mh-on-dark); }
+  html:root .Post { border-color:var(--mh-line-soft); }
+  html:root .Post-body { color:var(--mh-ink); }
+  html:root .Post-body blockquote { background:var(--control-bg); border-color:var(--mh-accent); color:var(--mh-muted); }
+  html:root .MobileTab-bar { background:var(--mh-strip) !important; }
+  html:root .MastheadTile-icon { background:var(--control-bg); color:var(--mh-accent); }
+  html:root .MastheadTile:nth-child(2) .MastheadTile-icon { background:#e9eee6; color:#46664e; }
+  html:root .MastheadTile:nth-child(3) .MastheadTile-icon { background:#f3e9d9; color:#876132; }
+  html:root .MastheadTile:nth-child(4) .MastheadTile-icon { background:#e6eaf4; color:#4f628c; }
+  html:root[data-theme^="dark"] .MastheadTile:nth-child(2) .MastheadTile-icon { background:#293c33; color:#bbd9c0; }
+  html:root[data-theme^="dark"] .MastheadTile:nth-child(3) .MastheadTile-icon { background:#403428; color:#edd0a3; }
+  html:root[data-theme^="dark"] .MastheadTile:nth-child(4) .MastheadTile-icon { background:#2e3349; color:#c2cbed; }
+  @media(max-width:767px) {
+   html .WelcomeHero .containerNarrow { padding:24px 20px; }
+   html:root .WelcomeHero .Hero-title { font-size:20px; }
+   html .WelcomeHero::after { right:-220px; }
+  }
+  /* Override Melon's fixed discussion surfaces when changing theme at runtime. */
+  html:root .DiscussionListItem { background:var(--mh-card) !important; border-color:var(--mh-line-soft) !important; }
+  html:root .DiscussionListItem:hover { background:var(--control-bg) !important; }
+  html:root[data-theme^="light"] { --welcome-bg:#f3e5df; }
+  html:root[data-theme^="dark"] { --welcome-bg:#352730; }
+  html:root[data-theme="light-hc"] { --welcome-bg:#efdad1; }
+  html:root[data-theme="dark-hc"] { --welcome-bg:#39232f; }
+  html:root .Hero.WelcomeHero { background:radial-gradient(ellipse at 12% 12%,var(--welcome-glow),transparent 65%),var(--welcome-bg) !important; }
+}

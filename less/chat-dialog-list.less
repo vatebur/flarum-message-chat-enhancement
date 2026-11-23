@@ -1,0 +1,82 @@
+& when (@mce-chat-dialog-list = 1) {
+  html:root .DialogListItem {
+    border-radius: 12px;
+    margin: 4px 0;
+  }
+
+  html:root .DialogListItem-button {
+    padding: 14px 10px;
+    border-radius: 12px;
+  }
+
+  html:root .DialogListItem.active {
+    background: var(--control-bg);
+    box-shadow: inset 3px 0 var(--button-primary-bg);
+  }
+
+  html:root .DialogListItem-title {
+    gap: 8px;
+  }
+
+  html:root .DialogListItem-title time {
+    font-size: 11px;
+    color: var(--mh-muted, var(--muted-color));
+    white-space: nowrap;
+  }
+
+  html:root .DialogListItem-lastMessage {
+    margin-top: 5px;
+    color: var(--mh-muted, var(--muted-color));
+  }
+
+  html:root .DialogSection-header {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 22px;
+    margin: 0;
+    border-bottom: 1px solid var(--mh-line, var(--control-bg));
+    background: var(--mh-card, var(--body-bg));
+  }
+
+  html:root .DialogSection-header > .Avatar {
+    --size: 40px;
+    width: 40px;
+    height: 40px;
+  }
+
+  html:root .DialogSection-header-info-title {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  html:root .DialogSection-header-info {
+    flex: 1;
+  }
+
+  html:root .DialogSection-header-actions {
+    margin-left: auto;
+  }
+
+  @media (max-width: 767px) {
+    html:root .DialogSection-header {
+      padding: 12px 14px;
+      gap: 10px;
+    }
+
+    html:root .DialogSection-back {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 40px;
+      min-height: 40px;
+    }
+
+    html:root .DialogSection-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+  }
+}

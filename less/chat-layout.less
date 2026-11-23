@@ -1,0 +1,150 @@
+& when (@mce-chat-layout = 1) {
+  html:root .MessagesPage .Page-hero {
+    display: none;
+  }
+
+  html:root .MessagesPage .Page-container {
+    display: block;
+    max-width: 1240px;
+    width: calc(100% - 48px);
+    padding: 0;
+    margin: 20px auto;
+  }
+
+  html:root .MessagesPage .Page-sidebar {
+    width: 100%;
+    margin: 0 0 12px;
+    float: none;
+  }
+
+  html:root .MessagesPage .MessagesPage-nav > ul {
+    display: flex;
+    align-items: center;
+    margin: 0;
+  }
+
+  html:root .MessagesPage .MessagesPage-nav .item-nav {
+    display: none;
+  }
+
+  html:root .MessagesPage .Page-content {
+    margin: 0;
+    width: 100%;
+    min-width: 0;
+  }
+
+  html:root .MessagesPage-content {
+    display: flex;
+    gap: 0;
+    height: calc(100dvh - 220px);
+    min-height: 360px;
+    border: 1px solid var(--mh-line, var(--control-bg));
+    border-radius: 18px;
+    background: var(--mh-card, var(--body-bg));
+    box-shadow: 0 12px 40px rgba(40,20,30,.06);
+    overflow: hidden;
+  }
+
+  html:root .MessagesPage-sidebar {
+    flex: 0 0 290px;
+    width: 290px;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 12px;
+    border-right: 1px solid var(--mh-line, var(--control-bg));
+    overflow-y: auto;
+    background: var(--mh-card, var(--body-bg));
+  }
+
+  html:root .MessagesPage-sidebar .IndexPage-toolbar {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 12px;
+  }
+
+  html:root .MessagesPage-sidebar .IndexPage-toolbar .Button {
+    background: transparent;
+  }
+
+  html:root .DialogSection {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    padding: 0;
+    background: var(--mh-ground, var(--body-bg-shaded, var(--control-bg)));
+  }
+
+  html:root .MessageStream {
+    flex: 1;
+    min-height: 0;
+    height: auto;
+    max-height: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 24px 0;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+
+  html:root .MessageStream-log {
+    padding: 0;
+  }
+
+  html:root .MessageStream-item {
+    margin: 0;
+    padding: 0;
+  }
+
+  html:root .MessageStream > :is(.MessageStream-log, .MessageStream-item, .TypingUsersContainer) {
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 767px) {
+    html:root .MessagesPage .Page-container {
+      width: 100%;
+      margin: 0;
+    }
+
+    html:root .MessagesPage .Page-sidebar {
+      margin: 0;
+      padding: 10px 14px;
+    }
+
+    html:root .MessagesPage-content {
+      height: calc(100dvh - 180px);
+      min-height: 260px;
+      border-radius: 0;
+      border-left: 0;
+      border-right: 0;
+    }
+
+    html:root .MessagesPage-sidebar {
+      width: 100%;
+      flex: 1;
+      border: 0;
+    }
+
+    html:root .MessagesPage-content--onDialog .MessagesPage-sidebar {
+      display: none;
+    }
+
+    html:root .MessagesPage-content:not(.MessagesPage-content--onDialog) .DialogSection {
+      display: none;
+    }
+
+    html:root .MessagesPage:has(.MessagesPage-content--onDialog) .Page-sidebar {
+      display: none;
+    }
+
+    html:root .MessageStream {
+      padding: 12px 12px 0;
+    }
+  }
+}

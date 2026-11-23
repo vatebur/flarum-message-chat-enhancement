@@ -1,0 +1,8 @@
+& when (@mce-editor-tools = 1) {
+  /* Compact editors — shared composer defaults. */
+  html:root .TextEditor .ProseMirrorMenu > .ButtonGroup:has([aria-label="添加链接"]),
+  html:root .TextEditor .ProseMirrorMenu > .ButtonGroup:has([aria-label="插入图片"]),
+  html:root .TextEditor .ProseMirrorMenu > .ButtonGroup:has([aria-label="更多控件"]) { display:none !important; }
+  html:root .Composer { border-radius:16px 16px 0 0; }
+  html:root .Composer .TextEditor-editor { padding:14px 16px; line-height:1.7; border-radius:12px; }
+}

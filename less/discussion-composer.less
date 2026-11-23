@@ -1,0 +1,60 @@
+& when (@mce-discussion-composer = 1) {
+  /* Discussion and reply writing workspace — 2026-11-19 */
+  html:root .Composer:is(.normal,.fullScreen):has(.ComposerBody:not(.ComposerBody--message)) { padding:0 !important; background:var(--mh-card, var(--body-bg)); border:1px solid var(--mh-line, var(--control-bg)); box-shadow:0 -12px 40px rgba(40,20,30,.12); }
+  html:root .Composer.normal:has(.ComposerBody:not(.ComposerBody--message)) { height:~"min(420px,70dvh)" !important; }
+  html:root .Composer.normal:has(.ComposerBody--discussion) { height:~"min(520px,80dvh)" !important; }
+  html:root .Composer:is(.normal,.fullScreen):has(.ComposerBody:not(.ComposerBody--message))::before { display:none !important; }
+  html:root .Composer:has(.ComposerBody:not(.ComposerBody--message)) .Composer-handle { display:none; }
+  html:root .Composer:has(.ComposerBody:not(.ComposerBody--message)) .Composer-controls { position:absolute; top:12px; right:14px; left:auto; width:auto; height:auto; background:transparent; z-index:3; }
+  html:root .Composer:has(.ComposerBody:not(.ComposerBody--message)) .Composer-controls .Button { width:32px; height:32px; padding:6px; border-radius:8px; color:var(--mh-muted, var(--muted-color)); }
+  html:root .Composer:has(.ComposerBody:not(.ComposerBody--message)) .Composer-content { height:100%; box-sizing:border-box; padding:22px 26px 16px; overflow:hidden; }
+  html:root .ComposerBody:not(.ComposerBody--message) { height:100%; padding:0; }
+  html:root .ComposerBody:not(.ComposerBody--message) > .ComposerBody-avatar { display:none; }
+  html:root .ComposerBody:not(.ComposerBody--message) .ComposerBody-content { margin:0; height:100%; display:flex; flex-direction:column; min-height:0; }
+  html:root .ComposerBody:not(.ComposerBody--message) .ComposerBody-header { display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin:0 0 14px; padding:0; flex-shrink:0; }
+  html:root .ComposerBody:not(.ComposerBody--message) .ComposerBody-header > li { margin:0; }
+  html:root .ComposerBody:not(.ComposerBody--message) .ComposerBody-header .item-title { max-width:calc(100% - 120px); margin-right:120px; }
+  html:root .ComposerBody:not(.ComposerBody--message) .ComposerBody-header h3 { margin:0; font-size:16px; line-height:1.5; overflow-wrap:anywhere; }
+  html:root .ComposerBody--discussion .ComposerBody-header .item-discussionTitle { flex:0 0 100%; width:100%; }
+  html:root .ComposerBody--discussion .DiscussionComposer-title { display:block; width:100%; height:46px; border:1px solid var(--mh-line, var(--control-bg)); background:var(--mh-ground, var(--body-bg-shaded, var(--control-bg))); padding:10px 14px; border-radius:10px; font-size:18px; font-weight:600; box-sizing:border-box; }
+  html:root .ComposerBody:not(.ComposerBody--message) .ComposerBody-editor { flex:1; min-height:0; padding:0; }
+  html:root .ComposerBody:not(.ComposerBody--message) .TextEditor { height:100%; display:flex; flex-direction:column; min-height:0; }
+  html:root .ComposerBody:not(.ComposerBody--message) .TextEditor-editorContainer { flex:1; min-height:0; display:flex; }
+  html:root .ComposerBody:not(.ComposerBody--message) .ComposerBody-mentionsWrapper { height:100%; width:100%; min-height:0; }
+  html:root .ComposerBody:not(.ComposerBody--message) .TextEditor-editor { height:100% !important; min-height:0 !important; max-height:none; overflow-y:auto; padding:14px 16px; border:1px solid var(--mh-line, var(--control-bg)); background:var(--mh-ground, var(--body-bg-shaded, var(--control-bg))); font-size:16px; box-sizing:border-box; }
+  html:root .ComposerBody:not(.ComposerBody--message) .TextEditor-controls { display:flex; flex-wrap:wrap; align-items:center; gap:4px; flex-shrink:0; margin:12px 0 0; padding:0; }
+  html:root .ComposerBody:not(.ComposerBody--message) .TextEditor-controls > li { margin:0; }
+  html:root .ComposerBody:not(.ComposerBody--message) .TextEditor-controls > .item-submit { position:static !important; order:5; margin-left:auto !important; }
+  html:root .ComposerBody:not(.ComposerBody--message) .TextEditor-controls > .item-submit .Button { position:static; height:38px; min-width:76px; padding:8px 16px; border-radius:10px; }
+  html:root .ComposerBody:not(.ComposerBody--message) .TextEditor-toolbar { display:flex; align-items:center; flex-wrap:wrap; gap:2px; }
+  html:root .ComposerBody:not(.ComposerBody--message) .TextEditor-controls .Button { min-height:36px; }
+  @media(max-width:767px) {
+   html:root body:has(.Composer.visible .ComposerBody:not(.ComposerBody--message)) .composer-backdrop { display:none !important; pointer-events:none !important; }
+   html:root body:has(.Composer.visible .ComposerBody:not(.ComposerBody--message)) .MobileTab { display:none !important; }
+   html:root .Composer:is(.normal,.fullScreen):has(.ComposerBody:not(.ComposerBody--message)).visible { position:fixed !important; inset:0 !important; width:100% !important; height:100dvh !important; max-height:100dvh; margin:0 !important; border:0; border-radius:0; transform:none !important; z-index:1040; }
+   html:root .Composer:has(.ComposerBody:not(.ComposerBody--message)) .Composer-content { padding:18px 14px max(14px,env(safe-area-inset-bottom)); }
+   html:root .Composer:has(.ComposerBody:not(.ComposerBody--message)) .Composer-controls { top:12px; right:10px; }
+   html:root .Composer:has(.ComposerBody:not(.ComposerBody--message)) .Composer-controls .item-fullScreen { display:none; }
+   html:root .ComposerBody:not(.ComposerBody--message) .ComposerBody-header .item-title { margin-right:76px; max-width:calc(100% - 76px); }
+   html:root .ComposerBody--discussion .DiscussionComposer-title { font-size:17px; }
+   html:root .ComposerBody:not(.ComposerBody--message) .TextEditor-toolbar { flex:1; min-width:0; }
+   html:root .ComposerBody:not(.ComposerBody--message) .ProseMirrorMenu { display:flex; flex-wrap:wrap; }
+   html:root .ComposerBody:not(.ComposerBody--message) .ProseMirrorMenu > .ButtonGroup,
+   html:root .ComposerBody:not(.ComposerBody--message) .ProseMirrorMenu > button:not(:has(.fa-bold,.fa-italic,.fa-quote-left)) { display:none; }
+   html:root .ComposerBody:not(.ComposerBody--message) .TextEditor-controls > .item-submit .Button-label { display:inline !important; }
+   html:root .ComposerBody:not(.ComposerBody--message) .TextEditor-controls > .item-submit .Button-labelText { display:inline !important; }
+  }
+  html:root .ComposerBody:not(.ComposerBody--message) .ComposerBody-header h3,
+  html:root .ComposerBody:not(.ComposerBody--message) .ComposerBody-header h3 a { color:var(--mh-ink, var(--text-color)) !important; }
+  @media(max-width:767px) {
+   html:root .Composer:has(.ComposerBody:not(.ComposerBody--message)) .Composer-controls { display:flex; gap:4px; width:68px; }
+   html:root .Composer:has(.ComposerBody:not(.ComposerBody--message)) .Composer-controls > li { position:static !important; display:block; float:none; }
+   html:root .Composer:has(.ComposerBody:not(.ComposerBody--message)) .Composer-controls > .item-fullScreen { display:none; }
+   html:root .Composer:has(.ComposerBody:not(.ComposerBody--message)) .Composer-controls .Button { color:var(--mh-muted, var(--muted-color)) !important; }
+   html:root .ComposerBody:not(.ComposerBody--message) .ComposerBody-header .item-title { height:auto; min-height:32px; align-items:center; }
+  }
+
+  @media(max-width:767px) { html:root .Composer:has(.ComposerBody:not(.ComposerBody--message)) .Composer-controls > .item-minimize { display:none; } html:root .Composer:has(.ComposerBody:not(.ComposerBody--message)) .Composer-controls { width:32px; } }
+
+  @media(min-width:768px) { html:root .Composer.normal:has(.ComposerBody.ComposerBody--discussion) { height:~"min(520px,80dvh)" !important; } }
+}

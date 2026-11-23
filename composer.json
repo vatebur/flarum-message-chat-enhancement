@@ -1,0 +1,22 @@
+{
+  "name": "vatebur/flarum-message-chat-enhancement",
+  "description": "Configurable chat and forum appearance enhancements for Flarum Messages.",
+  "type": "flarum-extension",
+  "require": {
+    "php": "^8.3",
+    "flarum/core": "^2.0.2",
+    "flarum/messages": "^2.0.2"
+  },
+  "extra": {
+    "flarum-extension": {
+      "title": "Message 聊天增强",
+      "category": "feature",
+      "optional-dependencies": ["yannisme/melon"],
+      "icon": {
+        "name": "fas fa-comments",
+        "backgroundColor": "#9e303e",
+        "color": "#ffffff"
+      }
+    }
+  }
+}
