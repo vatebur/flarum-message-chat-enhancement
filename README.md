@@ -14,12 +14,12 @@
 
 ## 安装与迁移
 
-1. 将本 Git 仓库复制或克隆到 Flarum 服务器。下面的示例使用 `/srv/extensions/flarum-message-chat-enhancement`，请换成实际路径。
-2. 在包含 `flarum` 命令和 `composer.json` 的 Flarum 根目录运行：
+1. GitHub 仓库为私有仓库。使用只对本仓库有 `Contents: Read-only` 权限的 GitHub 细粒度访问令牌。在 Flarum 根目录运行 `composer config --editor --auth`，将令牌写入 `github-oauth.github.com`。见 [Composer 私有仓库认证文档](https://getcomposer.org/doc/articles/authentication-for-private-packages.md#github-oauth)。
+2. 在包含 `flarum` 命令和 `composer.json` 的 Flarum 根目录添加 GitHub 仓库并安装。
 
    ```sh
-   composer config repositories.message-chat-enhancement vcs /srv/extensions/flarum-message-chat-enhancement
-   composer require vatebur/flarum-message-chat-enhancement:^0.1
+   composer config repositories.message-chat-enhancement vcs https://github.com/vatebur/flarum-message-chat-enhancement.git
+   composer require vatebur/flarum-message-chat-enhancement:0.1.0
    ```
 
 3. 在 Flarum 后台启用 **Message 聊天增强**，打开扩展页。全部开关初次安装时关闭。勾选需要的组并保存。要接管本次迁移涉及的全部外观样式，请开启全部 11 组。
