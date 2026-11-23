@@ -14,16 +14,15 @@
 
 ## 安装与迁移
 
-1. GitHub 仓库为私有仓库。使用只对本仓库有 `Contents: Read-only` 权限的 GitHub 细粒度访问令牌。在 Flarum 根目录运行 `composer config --editor --auth`，将令牌写入 `github-oauth.github.com`。见 [Composer 私有仓库认证文档](https://getcomposer.org/doc/articles/authentication-for-private-packages.md#github-oauth)。
-2. 在包含 `flarum` 命令和 `composer.json` 的 Flarum 根目录添加 GitHub 仓库并安装。
+1. 在包含 `flarum` 命令和 `composer.json` 的 Flarum 根目录添加公开的 GitHub 仓库并安装。
 
    ```sh
    composer config repositories.message-chat-enhancement vcs https://github.com/vatebur/flarum-message-chat-enhancement.git
    composer require vatebur/flarum-message-chat-enhancement:0.1.0
    ```
 
-3. 在 Flarum 后台启用 **Message 聊天增强**，打开扩展页。全部开关初次安装时关闭。勾选需要的组并保存。要接管本次迁移涉及的全部外观样式，请开启全部 11 组。
-4. 备份「外观 → 编辑自定义 CSS」中的原内容，再从该栏移除已迁移的规则并保存。手工添加的其他规则可留在原处。旧规则留在该栏时，扩展开关关闭后仍会看到旧规则的效果。
-5. 刷新论坛页面。Flarum 会在保存开关后重新编译资源。如需恢复原样式，可先粘贴备份，再停用扩展。
+2. 在 Flarum 后台启用 **Message 聊天增强**，打开扩展页。全部开关初次安装时关闭。勾选需要的组并保存。要接管本次迁移涉及的全部外观样式，请开启全部 11 组。
+3. 备份「外观 → 编辑自定义 CSS」中的原内容，再从该栏移除已迁移的规则并保存。手工添加的其他规则可留在原处。旧规则留在该栏时，扩展开关关闭后仍会看到旧规则的效果。
+4. 刷新论坛页面。Flarum 会在保存开关后重新编译资源。如需恢复原样式，可先粘贴备份，再停用扩展。
 
 安装包内含后台脚本。修改后台源码后，在仓库根目录运行 `node js/build.mjs`，并提交生成的 `js/dist/admin.js`。样式分组位于 `less/`，后台开关列表在 `style-groups.json`。
