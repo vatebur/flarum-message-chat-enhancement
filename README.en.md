@@ -75,9 +75,9 @@ Report problems or suggest improvements through [GitHub Issues](https://github.c
 
 ## Masthead Simplified Chinese patch
 
-Since v0.1.5, the extension includes all 60 frontend translations from the custom-footer patch for Masthead 1.9.2. These cover navigation, featured discussions, boards, latest discussions, active members, games, the footer, and discussion details. Flarum loads them through its native locale system when this extension is enabled and the locale is `zh-Hans`, independently of the style switches. Masthead is optional and loads first when installed. Other locales retain their existing translations.
+Since v0.1.5, the extension includes all 60 frontend translations from the custom-footer patch for Masthead 1.9.2. These cover navigation, featured discussions, boards, latest discussions, active members, games, the footer, and discussion details. Since v0.1.6, the independent **Masthead · Simplified Chinese translations** switch controls this patch. It defaults to on to preserve v0.1.5 behavior. Turning it off and refreshing the forum restores translations from other language packs. When enabled, Flarum loads the patch through its native locale system for `zh-Hans`, independently of the 11 style switches. Masthead is optional and loads first when installed. Other locales retain their existing translations.
 
-After updating and clearing the Flarum cache, remove the block between `BEGIN: Masthead 简体中文汉化补丁` and `END: Masthead 简体中文汉化补丁` from **Appearance → Custom Footer**, including its marker comments. Keep other footer content, including the fish styles, container, and script. Keep the old patch until the site has been updated.
+After updating and clearing the Flarum cache, remove the block between `BEGIN: Masthead 简体中文汉化补丁` and `END: Masthead 简体中文汉化补丁` from **Appearance → Custom Footer**, including its marker comments. Keep other footer content, including the fish styles, container, and script. Keep the old patch until the site has been updated. The old footer script runs independently: if it remains, it will still apply its translations even with the extension switch off.
 
 ## License
 

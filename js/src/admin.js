@@ -18,5 +18,12 @@ function adminExtension(groups) {
     );
   });
 
+  settings.setting(() => ({
+    setting: `${id}.masthead-zh-hans`,
+    label: app.translator.trans(`${id}.admin.settings.masthead-zh-hans.label`),
+    help: app.translator.trans(`${id}.admin.settings.masthead-zh-hans.help`),
+    type: 'boolean',
+  }), -1);
+
   return { extend: [settings] };
 }

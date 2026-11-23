@@ -34,3 +34,6 @@ vatebur-message-chat-enhancement:
       discussion-composer:
         label: Editor · Discussions and replies
         help: Adjust the writing area, action bar, and full-screen layout on mobile.
+      masthead-zh-hans:
+        label: Masthead · Simplified Chinese translations
+        help: Enabled by default. Load 60 Masthead frontend translations for zh-Hans. Disable to use other language packs. Remove the old custom-footer translation patch first, then refresh the forum after saving.
