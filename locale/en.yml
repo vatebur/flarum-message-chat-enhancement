@@ -15,7 +15,7 @@ vatebur-message-chat-enhancement:
         help: Style the input and toolbar. Also enable the Messages page layout to dock the composer below the conversation.
       theme:
         label: Forum · Warm paper theme and portal
-        help: Apply the warm paper palette, dark and high-contrast variants, and styles for the Melon portal, navigation, and controls.
+        help: Theme color changes require the Masthead extension to be installed and enabled. Apply the warm paper palette, dark and high-contrast variants, and styles for the Melon portal, navigation, and controls.
       mobile-discussion:
         label: Forum · Mobile discussion pages
         help: Adjust discussion headings, message text, blockquotes, and reply spacing.
