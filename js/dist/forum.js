@@ -175,7 +175,12 @@ module.exports = (function forumExtension() {
     extend('flarum/common/components/TextEditor', 'controlItems', function (items) {
       const draft = inlineComposers.get(this.attrs.composer);
       const submit = items.get('submit');
-      if (draft?.sending && submit) submit.attrs.loading = true;
+      if (!draft || !submit) return;
+
+      // The inline submit belongs in the dock, not Flarum's mobile header.
+      submit.attrs.itemClassName = (submit.attrs.itemClassName ?? '')
+        .split(/\s+/).filter((name) => name !== 'App-primaryControl').join(' ');
+      if (draft.sending) submit.attrs.loading = true;
     });
   }
 

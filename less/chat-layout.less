@@ -143,6 +143,28 @@
       display: none;
     }
 
+    // Fill the content box above any mobile navigation padding supplied by
+    // the theme instead of reserving a fixed 180px for every conversation.
+    html:root .App-content:has(.MessagesPage-content--onDialog) {
+      box-sizing: border-box;
+      height: calc(100dvh - var(--header-height-phone));
+      min-height: 0;
+    }
+
+    html:root .App-content:has(.MessagesPage-content--onDialog) > #content,
+    html:root .MessagesPage:has(.MessagesPage-content--onDialog),
+    html:root .MessagesPage:has(.MessagesPage-content--onDialog) > .Page-main,
+    html:root .MessagesPage:has(.MessagesPage-content--onDialog) .Page-container,
+    html:root .MessagesPage:has(.MessagesPage-content--onDialog) .Page-content,
+    html:root .MessagesPage-content--onDialog {
+      height: 100%;
+      min-height: 0;
+    }
+
+    html:root .App:has(.MessagesPage-content--onDialog) .App-footer {
+      display: none;
+    }
+
     html:root .MessageStream {
       padding: 12px 12px 0;
     }
