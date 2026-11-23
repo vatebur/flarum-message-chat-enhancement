@@ -11,8 +11,8 @@ vatebur-message-chat-enhancement:
         label: 私信 · 消息气泡和媒体
         help: 调整收发消息的排版、头像、时间、图片和视频。
       chat-composer:
-        label: 私信 · 回复输入栏
-        help: 调整输入框和工具栏。与「私信 · 页面布局」一同开启时，输入栏会贴合对话底部。
+        label: 私信 · 常驻回复输入栏
+        help: 打开会话即可在底部直接输入。发送后输入栏留在原位。
       theme:
         label: 论坛 · 暖纸配色和门户
         help: 主题色修改依赖 Masthead 插件，请先安装并启用。应用暖纸与朱砂配色、明暗和高对比度变体，并调整 Melon 门户、导航和公共控件。

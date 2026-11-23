@@ -1,39 +1,64 @@
 & when (@mce-chat-composer = 1) {
-  /* 4. 对话输入栏
-   * Flarum 的回复按钮在消息流中，编辑器由全站 Composer 挂载。
-   * 回复时让 Composer 参与页面布局，消息流随输入栏同步缩放。
-   * 用固定收件人标签识别对话回复，保留新建窗口的收件人和工具栏。
-   */
-  html:root .App-content:has(.MessagesPage-content--onDialog) {
-    --pm-page-width: calc(100% - 48px);
-    --pm-sidebar-width: 290px;
-    --pm-dialog-height: calc(100dvh - 220px);
-    --pm-dialog-min-height: 360px;
+  html:root .DialogSection--mceInlineReply {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  html:root .DialogSection--mceInlineReply > .DialogSection-header {
+    flex: 0 0 auto;
+  }
+
+  html:root .DialogSection--mceInlineReply > .MessageStream {
+    flex: 1 1 auto;
+    min-height: 0;
+    mask-image: none;
+  }
+
+  html:root .MceReplyDock {
+    flex: 0 0 auto;
+    min-width: 0;
+  }
+
+  html:root .MceInlineReply {
     --pm-bar-padding: 12px;
-    --pm-stream-gutter: 24px;
-    --pm-page-margin: 20px;
     --pm-field-padding: 9px;
     --pm-field-line-height: 24px;
     --pm-field-lines: 5;
     --pm-field-frame: calc(2 * var(--pm-field-padding) + 2px);
     --pm-field-min: calc(var(--pm-field-line-height) + var(--pm-field-frame));
+    --pm-field-max: calc(var(--pm-field-lines) * var(--pm-field-line-height) + var(--pm-field-frame));
     --pm-action-height: 36px;
     --pm-action-gap: 6px;
-    --pm-field-max: calc(var(--pm-field-lines) * var(--pm-field-line-height) + var(--pm-field-frame));
+
+    padding: var(--pm-bar-padding);
+    border-top: 1px solid var(--mh-line, var(--control-bg));
+    background: var(--mh-card, var(--body-bg));
   }
 
-  & when (@mce-chat-layout = 1) {
-    html:root .MessagesPage-content--onDialog {
-      height: var(--pm-dialog-height);
-      min-height: var(--pm-dialog-min-height);
-    }
+  html:root .MceInlineReply :is(.ComposerBody-avatar, .ComposerBody-header, .ProseMirrorMenu) {
+    display: none;
   }
 
-  /* 待输入和编辑状态共用同一组背景、边框、内边距和行高。 */
-  html:root .MessagesPage .ReplyPlaceholder,
-  html:root .App-content:has(.MessagesPage-content--onDialog) .Composer.normal .ComposerBody--message:has(.MessageComposer-recipients-label) .TextEditor-editor {
+  html:root .MceInlineReply :is(.ComposerBody, .ComposerBody-content, .ComposerBody-editor) {
+    height: auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  html:root .MceInlineReply .TextEditor {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--pm-action-gap);
+    min-height: calc(var(--pm-field-min) + var(--pm-action-height) + var(--pm-action-gap));
+  }
+
+  html:root .MceInlineReply .TextEditor-editor {
     box-sizing: border-box;
     width: 100%;
+    height: auto !important;
+    min-height: var(--pm-field-min);
+    max-height: var(--pm-field-max);
     margin: 0;
     padding: var(--pm-field-padding) 12px;
     border: 1px solid var(--mh-line, var(--control-bg));
@@ -42,301 +67,57 @@
     color: var(--mh-ink, var(--text-color));
     font-size: 16px;
     line-height: var(--pm-field-line-height);
-    text-align: left;
-  }
-
-  html:root .MessagesPage .ReplyPlaceholder {
-    display: block;
-    min-height: var(--pm-field-min);
-  }
-
-  html:root .MessagesPage .ReplyPlaceholder .Post-side {
-    display: none;
-  }
-
-  html:root .MessagesPage .ReplyPlaceholder .Post-container,
-  html:root .MessagesPage .ReplyPlaceholder .Post-main {
-    display: block;
-    margin: 0;
-    padding: 0;
-  }
-
-  html:root .MessagesPage .ReplyPlaceholder .Post-header {
-    display: block;
-    margin: 0;
-    color: var(--mh-muted, var(--muted-color));
-    font: inherit;
-  }
-
-  & when (@mce-chat-layout = 1) {
-    /* 待输入时预留功能行，点击后输入框保持同一高度和左侧起点。 */
-    html:root .MessagesPage .MessageStream > .MessageStream-item:has(> .ReplyPlaceholder) {
-      position: sticky;
-      bottom: 0;
-      z-index: 2;
-      margin-top: auto;
-      margin-inline: calc(-1 * var(--pm-stream-gutter));
-      padding: var(--pm-bar-padding);
-      padding-bottom: calc(var(--pm-bar-padding) + var(--pm-action-height) + var(--pm-action-gap));
-      border-top: 1px solid var(--mh-line, var(--control-bg));
-      background: var(--mh-card, var(--body-bg));
-    }
-
-    /* 编辑器在 #content 后面。把两者放进同一个纵向网格，
-     * 由输入栏的实际高度决定消息流剩余空间。
-     */
-    html:root .App-content:has(.MessagesPage-content--onDialog):has(.Composer.normal.visible .MessageComposer-recipients-label) {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      grid-template-rows: auto minmax(0, 1fr) auto;
-      grid-template-areas: "notices" "dialog" "composer";
-      height: calc(var(--pm-dialog-height) + var(--pm-page-chrome));
-      min-height: calc(var(--pm-dialog-min-height) + var(--pm-page-chrome));
-      /* 新建私信导航、容器上下外距及页面边框。 */
-      --pm-page-chrome: 89px;
-    }
-
-    html:root .App-content:has(.MessagesPage-content--onDialog):has(.Composer.normal.visible .MessageComposer-recipients-label) > #notices {
-      grid-area: notices;
-    }
-
-    html:root .App-content:has(.MessagesPage-content--onDialog):has(.Composer.normal.visible .MessageComposer-recipients-label) > #content {
-      grid-area: dialog;
-      display: flex;
-      flex-direction: column;
-      min-height: 0;
-      /* Flarum 默认给浮动 Composer 添加页面底部留白。 */
-      padding-bottom: 0 !important;
-    }
-
-    html:root #content:has(.MessagesPage-content--onDialog):has(~ .App-composer .Composer.normal.visible .MessageComposer-recipients-label) :is(.MessagesPage, .Page-main, .Page-container, .Page-content, .MessagesPage-content--onDialog) {
-      display: flex;
-      flex-direction: column;
-      flex: 1 1 auto;
-      min-height: 0;
-      height: auto;
-      gap: 0;
-    }
-
-    html:root #content:has(.MessagesPage-content--onDialog):has(~ .App-composer .Composer.normal.visible .MessageComposer-recipients-label) .Page-container {
-      margin-bottom: 0;
-    }
-
-    html:root #content:has(.MessagesPage-content--onDialog):has(~ .App-composer .Composer.normal.visible .MessageComposer-recipients-label) .MessagesPage-content--onDialog {
-      flex-direction: row;
-      border-bottom: 0;
-      border-radius: 18px 18px 0 0;
-    }
-
-    html:root #content:has(.MessagesPage-content--onDialog):has(~ .App-composer .Composer.normal.visible .MessageComposer-recipients-label) .MessageStream-item:has(> .ReplyPlaceholder) {
-      display: none;
-    }
-
-    html:root .App-content:has(.MessagesPage-content--onDialog) > .App-composer:has(.Composer.normal.visible .MessageComposer-recipients-label) {
-      grid-area: composer;
-      position: relative;
-      inset: auto;
-      width: var(--pm-page-width);
-      max-width: 1240px;
-      margin-inline: auto;
-      margin-bottom: var(--pm-page-margin);
-      padding-inline-start: var(--pm-sidebar-width);
-    }
-
-    html:root .App-content:has(.MessagesPage-content--onDialog) > .App-composer:has(.Composer.normal.visible .MessageComposer-recipients-label) > .container {
-      width: 100%;
-      padding: 0;
-    }
-
-    /* 桌面端将会话列表的底边延伸至输入栏下方。 */
-    @media (min-width: 768px) {
-      html:root .App-content:has(.MessagesPage-content--onDialog) > .App-composer:has(.Composer.normal.visible .MessageComposer-recipients-label)::before {
-        content: "";
-        position: absolute;
-        inset: 0 auto 0 0;
-        width: calc(var(--pm-sidebar-width) + 1px);
-        box-sizing: border-box;
-        border: 1px solid var(--mh-line, var(--control-bg));
-        border-top: 0;
-        border-radius: 0 0 0 18px;
-        background: var(--mh-card, var(--body-bg));
-      }
-    }
-
-    html:root .App-content:has(.MessagesPage-content--onDialog) .Composer.normal.visible:has(.MessageComposer-recipients-label) {
-      position: relative !important;
-      inset: auto !important;
-      width: 100%;
-      /* 覆盖全站编辑器写入的固定高度。 */
-      height: auto !important;
-      min-height: 0;
-      margin: 0 !important;
-      padding: 0 !important;
-      transform: none !important;
-      border: 1px solid var(--mh-line, var(--control-bg));
-      border-radius: 0 0 18px 0;
-      background: var(--mh-card, var(--body-bg));
-      box-shadow: none;
-      overflow: visible;
-      transition: none;
-    }
-
-    html:root .App-content:has(.MessagesPage-content--onDialog) .Composer.normal.visible:has(.MessageComposer-recipients-label) :is(.Composer-handle, .ComposerBody-avatar, .ComposerBody-header, .item-fullScreen, .item-minimize),
-    html:root .App-content:has(.MessagesPage-content--onDialog) .Composer.normal.visible:has(.MessageComposer-recipients-label)::before {
-      display: none;
-    }
-
-    html:root .App-content:has(.MessagesPage-content--onDialog) .Composer.normal.visible:has(.MessageComposer-recipients-label) .Composer-content {
-      height: auto;
-      padding: var(--pm-bar-padding);
-      overflow: visible;
-    }
-
-    html:root .App-content:has(.MessagesPage-content--onDialog) .Composer.normal.visible:has(.MessageComposer-recipients-label) :is(.ComposerBody--message, .ComposerBody-content, .ComposerBody-editor) {
-      height: auto;
-      margin: 0;
-      padding: 0;
-    }
-  }
-
-  /* 对话保留附件、提及和表情，隐藏长文排版菜单。 */
-  html:root .App-content:has(.MessagesPage-content--onDialog) .ComposerBody--message:has(.MessageComposer-recipients-label) .ProseMirrorMenu {
-    display: none !important;
-  }
-
-  /* 单行起步，显式换行和自动折行都会增高。超过五行后仅输入区滚动。 */
-  html:root .App-content:has(.MessagesPage-content--onDialog) .Composer.normal .ComposerBody--message:has(.MessageComposer-recipients-label) .TextEditor-editor {
     field-sizing: content;
-    height: auto !important;
-    min-height: var(--pm-field-min);
-    max-height: var(--pm-field-max);
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden auto;
     overflow-wrap: anywhere;
     overscroll-behavior: contain;
     resize: none;
   }
 
-  html:root .App-content:has(.MessagesPage-content--onDialog) .Composer.normal .ComposerBody--message:has(.MessageComposer-recipients-label) .TextEditor-editor > p {
+  html:root .MceInlineReply .TextEditor-editor > p {
     margin-block: 0;
   }
 
-  html:root .App-content:has(.MessagesPage-content--onDialog) .Composer.normal .ComposerBody--message:has(.MessageComposer-recipients-label) .TextEditor-editor > p.is-editor-empty::before,
-  html:root .App-content:has(.MessagesPage-content--onDialog) .Composer.normal .ComposerBody--message:has(.MessageComposer-recipients-label) .TextEditor-editor::placeholder {
+  html:root .MceInlineReply .TextEditor-editor > p.is-editor-empty::before,
+  html:root .MceInlineReply .TextEditor-editor::placeholder {
     color: var(--mh-muted, var(--muted-color));
   }
 
-  & when (@mce-chat-layout = 1) {
-    /* 文字区独占一行；附件、提及、表情、发送等控件另起一行。 */
-    html:root .App-content:has(.MessagesPage-content--onDialog) .Composer.normal .ComposerBody--message:has(.MessageComposer-recipients-label) .TextEditor {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: var(--pm-action-gap);
-    }
+  html:root .MceInlineReply :is(.TextEditor-controls, .TextEditor-toolbar) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2px;
+    margin: 0;
+    padding: 0;
+  }
 
-    html:root .App-content:has(.MessagesPage-content--onDialog) .Composer.normal .ComposerBody--message:has(.MessageComposer-recipients-label) .TextEditor-controls,
-    html:root .App-content:has(.MessagesPage-content--onDialog) .Composer.normal .ComposerBody--message:has(.MessageComposer-recipients-label) .TextEditor-toolbar {
-      display: flex;
-      align-items: center;
-      gap: 2px;
-      margin: 0;
-      padding: 0;
-    }
+  html:root .MceInlineReply .TextEditor-controls > li {
+    margin: 0;
+  }
 
-    html:root .App-content:has(.MessagesPage-content--onDialog) .Composer.normal .ComposerBody--message:has(.MessageComposer-recipients-label) .TextEditor-controls {
-      display: grid;
-      grid-template-columns: auto minmax(0, 1fr) auto;
-      /* 为独立挂载的关闭按钮在左侧留出位置。 */
-      padding-inline-start: calc(var(--pm-action-height) + var(--pm-action-gap));
-      overflow: visible;
-    }
+  html:root .MceInlineReply .TextEditor-controls > .item-submit {
+    position: static !important;
+    order: 1;
+    margin-inline-start: auto;
+  }
 
-    html:root .App-content:has(.MessagesPage-content--onDialog) .Composer.normal .ComposerBody--message:has(.MessageComposer-recipients-label) .TextEditor-controls > li {
-      margin: 0;
-    }
+  html:root .MceInlineReply .TextEditor-controls .Button {
+    min-height: var(--pm-action-height);
+  }
 
-    html:root .App-content:has(.MessagesPage-content--onDialog) .Composer.normal .ComposerBody--message:has(.MessageComposer-recipients-label) .TextEditor-controls > .item-submit {
-      position: static !important;
-      grid-column: 3;
-      grid-row: 1;
-      justify-self: end;
-    }
-
-    html:root .App-content:has(.MessagesPage-content--onDialog) .Composer.normal .ComposerBody--message:has(.MessageComposer-recipients-label) .TextEditor-controls .Button {
-      min-width: var(--pm-action-height);
-      min-height: var(--pm-action-height);
-    }
-
-    html:root .App-content:has(.MessagesPage-content--onDialog) .Composer.normal .ComposerBody--message:has(.MessageComposer-recipients-label) .TextEditor-controls > .item-submit .Button {
-      position: static;
-      height: var(--pm-action-height);
-      padding: 0 12px;
-      border-radius: 10px;
-    }
-
-    html:root .App-content:has(.MessagesPage-content--onDialog) .Composer.normal.visible:has(.MessageComposer-recipients-label) .Composer-controls {
-      position: absolute;
-      inset: auto auto var(--pm-bar-padding) var(--pm-bar-padding);
-      z-index: 3;
-      width: auto;
-      height: auto;
-      margin: 0;
-      background: transparent;
-    }
-
-    html:root .App-content:has(.MessagesPage-content--onDialog) .Composer.normal.visible:has(.MessageComposer-recipients-label) .Composer-controls > .item-close {
-      display: block;
-      position: static;
-    }
-
-    html:root .App-content:has(.MessagesPage-content--onDialog) .Composer.normal.visible:has(.MessageComposer-recipients-label) .Composer-controls > .item-close > .Button {
-      width: var(--pm-action-height);
-      height: var(--pm-action-height);
-      justify-content: center;
-      padding: 0;
-      color: var(--mh-muted, var(--muted-color));
-    }
+  html:root .MceInlineReply .TextEditor-controls > .item-submit .Button {
+    position: static;
+    min-width: var(--pm-action-height);
+    padding: 0 12px;
+    border-radius: 10px;
   }
 
   @media (max-width: 767px) {
-    html:root .App-content:has(.MessagesPage-content--onDialog) {
-      --pm-page-width: 100%;
-      --pm-sidebar-width: 0px;
-      --pm-dialog-height: calc(100dvh - 120px);
-      --pm-dialog-min-height: 260px;
+    html:root .MceInlineReply {
       --pm-bar-padding: 8px;
-      --pm-stream-gutter: 12px;
-      --pm-page-margin: 0px;
       --pm-action-height: 44px;
-    }
-
-    & when (@mce-chat-layout = 1) {
-      html:root .MessagesPage-content.MessagesPage-content--onDialog {
-        height: var(--pm-dialog-height);
-        border-radius: 0;
-      }
-
-      html:root .App-content:has(.MessagesPage-content--onDialog):has(.Composer.normal.visible .MessageComposer-recipients-label) {
-        --pm-page-chrome: 0px;
-        /* 保留主题添加的底部导航占位，避免聚焦时输入栏上跳。 */
-        box-sizing: content-box;
-      }
-
-      html:root #content:has(.MessagesPage-content--onDialog):has(~ .App-composer .Composer.normal.visible .MessageComposer-recipients-label) .MessagesPage-content--onDialog,
-      html:root .App-content:has(.MessagesPage-content--onDialog) .Composer.normal.visible:has(.MessageComposer-recipients-label) {
-        border-radius: 0;
-      }
-
-      /* Flarum 将移动端遮罩挂载在 body 下。 */
-      html:root body:has(.MessagesPage-content--onDialog):has(.Composer.normal.visible .MessageComposer-recipients-label) > .composer-backdrop {
-        display: none !important;
-      }
-
-      html:root .App-content:has(.MessagesPage-content--onDialog) .Composer.normal .ComposerBody--message:has(.MessageComposer-recipients-label) .TextEditor-controls > .item-submit .Button {
-        width: var(--pm-action-height);
-        justify-content: center;
-        padding-inline: 0;
-      }
+      padding-bottom: max(var(--pm-bar-padding), env(safe-area-inset-bottom));
     }
   }
 }
