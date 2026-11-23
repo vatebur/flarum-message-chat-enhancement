@@ -5,6 +5,11 @@ function forumExtension() {
   const composerModule = 'forum/components/MessageComposer';
 
   app.initializers.add(id, () => {
+    // Flarum hydrates forum and session after initializers, before mounting.
+    app.beforeMount(initializeInlineReply);
+  });
+
+  function initializeInlineReply() {
     if (!app.forum.attribute('vateburMessageInlineReply')) return;
 
     const { extend } = flarum.reg.get('core', 'common/extend');
@@ -171,7 +176,7 @@ function forumExtension() {
       const submit = items.get('submit');
       if (draft?.sending && submit) submit.attrs.loading = true;
     });
-  });
+  }
 
   return {};
 }
