@@ -1,5 +1,7 @@
 # Message 聊天增强
 
+[English](README.en.md) | 简体中文
+
 把 Flarum「外观 → 自定义样式」里的私信和论坛样式迁移为可独立启用的扩展。以 Flarum 2.0.2、Messages 2.0.2 和 Melon 0.1.3 上使用的样式为基础。要求 PHP 8.3 及以上、Flarum 2.0.2 及以上（2.x）和官方 Messages 2.0.2 及以上（2.x）。Melon 为可选扩展。
 
 ## 样式开关
@@ -28,3 +30,7 @@
 4. 刷新论坛页面。Flarum 会在保存开关后重新编译资源。如需恢复原样式，可先粘贴备份，再停用扩展。
 
 安装包内含后台和论坛端脚本。修改前端源码后，在仓库根目录运行 `node js/build.mjs`，并提交生成的 `js/dist/` 脚本。样式分组位于 `less/`，后台开关列表在 `style-groups.json`。
+
+## 许可证
+
+本扩展采用 [MIT 许可证](LICENSE)。

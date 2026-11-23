@@ -1,6 +1,7 @@
 {
   "name": "vatebur/flarum-message-chat-enhancement",
   "description": "Configurable chat and forum appearance enhancements for Flarum Messages.",
+  "license": "MIT",
   "type": "flarum-extension",
   "require": {
     "php": "^8.3",
@@ -9,7 +10,7 @@
   },
   "extra": {
     "flarum-extension": {
-      "title": "Message 聊天增强",
+      "title": "Message Chat Enhancement",
       "category": "feature",
       "optional-dependencies": ["yannisme/melon"],
       "icon": {

@@ -18,7 +18,7 @@ vatebur-message-chat-enhancement:
         help: Theme color changes require the Masthead extension to be installed and enabled. Apply the warm paper palette, dark and high-contrast variants, and styles for the Melon portal, navigation, and controls.
       mobile-discussion:
         label: Forum · Mobile discussion pages
-        help: Adjust discussion headings, message text, blockquotes, and reply spacing.
+        help: Adjust discussion headings, post content, blockquotes, and reply spacing.
       mobile-discussion-list:
         label: Forum · Mobile discussion lists
         help: Adjust lists on the homepage, tag feeds, following, and search results.
