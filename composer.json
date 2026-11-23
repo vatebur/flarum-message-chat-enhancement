@@ -12,7 +12,7 @@
     "flarum-extension": {
       "title": "Message Chat Enhancement",
       "category": "feature",
-      "optional-dependencies": ["yannisme/melon"],
+      "optional-dependencies": ["yannisme/melon", "ernestdefoe/masthead"],
       "icon": {
         "name": "fas fa-comments",
         "backgroundColor": "#9e303e",

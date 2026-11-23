@@ -73,6 +73,12 @@ Style groups live in `less/`. Their admin setting names are listed in `style-gro
 
 Report problems or suggest improvements through [GitHub Issues](https://github.com/vatebur/flarum-message-chat-enhancement/issues). For layout issues, include your Flarum version, theme, relevant extensions, and a screenshot.
 
+## Masthead Simplified Chinese patch
+
+Since v0.1.5, the extension includes all 60 frontend translations from the custom-footer patch for Masthead 1.9.2. These cover navigation, featured discussions, boards, latest discussions, active members, games, the footer, and discussion details. Flarum loads them through its native locale system when this extension is enabled and the locale is `zh-Hans`, independently of the style switches. Masthead is optional and loads first when installed. Other locales retain their existing translations.
+
+After updating and clearing the Flarum cache, remove the block between `BEGIN: Masthead 简体中文汉化补丁` and `END: Masthead 简体中文汉化补丁` from **Appearance → Custom Footer**, including its marker comments. Keep other footer content, including the fish styles, container, and script. Keep the old patch until the site has been updated.
+
 ## License
 
 Released under the [MIT License](LICENSE).
